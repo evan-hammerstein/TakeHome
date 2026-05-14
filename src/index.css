@@ -1,0 +1,110 @@
+:root {
+  --text: #3a4a62;
+  --text-h: #0a1628;
+  --text-muted: #5a6b82;
+  --bg: #f8fafc;
+  --page-bg: #dfe8f4;
+  --page-bg-mid: #d0dff0;
+  --border: #b3c5db;
+  --border-soft: #e2eaf4;
+  --code-bg: #edf2f9;
+  --shadow-md: 0 4px 18px rgba(15, 35, 70, 0.1), 0 1px 3px rgba(10, 22, 40, 0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+  /* Primary brand blue → readable on light surfaces */
+  --accent: #1565c0;
+  --accent-soft: rgba(21, 101, 192, 0.14);
+  --output-tint: #e8f1fb;
+  --output-tint-stripe: #d7e8f8;
+  --error-bg: #fef2f2;
+  --error-border: #f0b4b4;
+  --error-text: #7f1d1d;
+
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+  font: 16px/1.5 var(--sans);
+  letter-spacing: 0.01em;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--page-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --text: #9db0c8;
+    --text-h: #f0f6ff;
+    --text-muted: #6b7f99;
+    --bg: #141f33;
+    --page-bg: #0a1628;
+    --page-bg-mid: #0d1f3d;
+    --border: #243652;
+    --border-soft: #1a2d4a;
+    --code-bg: #101e36;
+    --shadow-md: 0 8px 28px rgba(0, 8, 24, 0.55);
+    --accent: #5eb4f5;
+    --accent-soft: rgba(94, 180, 245, 0.16);
+    --output-tint: #152a45;
+    --output-tint-stripe: #1a3352;
+    --error-bg: #2a1418;
+    --error-border: #5c3038;
+    --error-text: #fecaca;
+  }
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: radial-gradient(
+      130% 90% at 50% -25%,
+      var(--page-bg-mid),
+      var(--page-bg) 50%,
+      color-mix(in srgb, var(--page-bg) 88%, var(--accent) 12%) 100%
+    )
+    fixed;
+}
+
+h1,
+h2 {
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  margin: 0 0 0.35rem;
+}
+
+p {
+  margin: 0;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--text-h);
+  border: 1px solid var(--border-soft);
+}
