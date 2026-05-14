@@ -42,11 +42,8 @@ export function columnLabel(col: ColumnRef): string {
   return col.kind === 'input' ? `${col.field} (input)` : `${col.field} (output)`
 }
 
-// --- Pure math ---------------------------------------------------------------
-
 /**
- * Ordinary least squares (OLS) through points (xᵢ, yᵢ): solves for slope `m` and intercept `b`
- * in y ≈ m·x + b using the standard closed form (sums n, Σx, Σy, Σxy, Σx²).
+ * calculating the slope and intercept of the line of best fit using the formula y ≈ m·x + b
  *
  * Returns `null` when fewer than two points, length mismatch, or Σx is degenerate
  * (all x equal → denominator ~ 0) so callers can skip drawing a trendline.

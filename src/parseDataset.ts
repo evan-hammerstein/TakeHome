@@ -1,26 +1,5 @@
 /**
- * parseDataset — JSON → validated experiment table model
- *
- * **Read top → bottom:** public types → error class → shape/number guards → one-row parser
- * → `parseDataset` orchestration (top-level JSON + column union).
- *
- * Ticket-style summary:
- * - Parse with `JSON.parse`; any syntax error becomes `DatasetParseError` so the UI
- *   can show one consistent error path (same as shape violations).
- * - Walk the top-level object with `Object.entries`; each value is an experiment row.
- * - Validate with small guards: `isPlainObject` rejects arrays/null/nested JSON types
- *   where we require a string-keyed map.
- * - `inputs` / `outputs` are required own properties (`hasOwnProperty`) so `"inputs": null`
- *   fails clearly; values are normalized via `parseNumericFieldMap` + `assertNonNegativeNumber`.
- * - Column headers (`inputFields`, `outputFields`) are built as the **union of keys**
- *   seen across all runs, then sorted with `localeCompare(..., { sensitivity: 'base' })`
- *   for stable, case-insensitive alphabetical order.
- *
- * Product decisions (documented for reviewers):
- * - Extra keys on an experiment object: ignored (only `inputs` / `outputs` read).
- * - Missing `inputs` or `outputs`: error (both required).
- * - Missing keys inside inputs/outputs for a given cell: UI treats as 0 (handled in App,
- *   not in this module’s output maps — maps only contain keys that were present in JSON).
+ * parseDataset — JSON → validated experiment table model, used to parse the JSON input and validate the data
  */
 
 // --- Public types ----------------------------------------------------------
